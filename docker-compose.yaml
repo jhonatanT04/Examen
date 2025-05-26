@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend/proyecto
+    ports:
+      - "80:80"
+    depends_on:
+      - websocket
+    
+
+  websocket:
+    build: ./websocket-server
+    ports:
+      - "8080:8080"
+
+
