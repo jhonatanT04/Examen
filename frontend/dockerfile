@@ -1,0 +1,9 @@
+# Etapa de build
+FROM node:18 as build
+WORKDIR /app
+COPY . .
+RUN npm install && npm run build --prod
+
+# Etapa de producción
+FROM httpd:2.4
+COPY --from=build /app/dist/proyecto /usr/local/apache2/htdocs/
