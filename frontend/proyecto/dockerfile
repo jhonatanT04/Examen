@@ -1,9 +1,13 @@
-# Etapa de build
-FROM node:18 as build
+FROM node:18-alpine as build
+
 WORKDIR /app
 COPY . .
-RUN npm install && npm run build --prod
+RUN npm install
+RUN npm run build
 
-# Etapa de producción
-FROM httpd:2.4
-COPY --from=build /app/dist/proyecto /usr/local/apache2/htdocs/
+FROM nginx:alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build /app/dist/appangular/browser /usr/share/nginx/html
+
+EXPOSE 80
