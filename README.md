@@ -1,6 +1,4 @@
-Perfecto, con base en las imágenes y el objetivo de realizar la actividad con Kubernetes, a continuación te dejo los comandos y pasos necesarios para completar cada punto:
 
----
 
 ### ✅ 1. **Creación de un Deployment**
 
